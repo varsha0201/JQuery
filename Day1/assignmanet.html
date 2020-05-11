@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="tagul">
+        <li>Mango</li>
+        <li>Banana</li>
+        <li>Orange</li>
+        <li>Cherry</li>
+    </ul>
+
+    <p class="demo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. A fugit repudiandae quod, molestias necessitatibus libero pariatur ad enim ipsa corrupti officia magnam quidem omnis, odit aliquam eos exercitationem? Sapiente, nesciunt.</p>
+    <button>click on this</button>
+    <!-- TagName selector -->
+    <!-- ID selector -->
+    <!-- Class selector -->
+    <script src="/Day1/jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#tagul').css('color','red')
+            $('button').click(function(){
+                $('.demo').hide();
+            });
+         
+        });
+
+
+
+    </script>
+</body>
+</html>

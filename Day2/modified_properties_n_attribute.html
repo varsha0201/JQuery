@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .golden-link{
+            color: goldenrod;
+        }
+        .selected{color: red;}
+        .highlight{background-color: goldenrod;}
+        .imgwidth{width: 300px;}
+        .middle{
+            color:lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="www.edureka.com">Link to Edureka</a>
+        <p id="pid" class="selected">This is second div</p>
+        <div id='divid'></div>
+        <img src="/img/1.jpeg" id="imgid">
+    </div>
+    <hr>
+    <a href="www.facebook.com" id='google-link' target="_self">Facebook link</a>
+    <a href="www.google.com" target="_self" class="color-box after">google link</a>
+    <button id="btn1">Change target</button>
+    <hr>
+    <ul>
+        <li><a href="www.google.com">Google</a></li>
+        <li class="middle"><a href="www.amazon.com" >Amazon</a></li>
+        <li class="middle"><a href="www.filpkart.com" >Filpkart</a></li>
+        <li><a href="www.facebook.com">Facebook</a></li>
+    </ul>
+
+
+    <script src="/js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // $('li').filter('.middle').toggleClass('golden-link');
+            $('li').has('ul').css('background-color','red');
+
+            // $('li').eq(1).addClass('golden-link');
+            
+            // $('li').each(function(index, element){
+            //     console.log($(this).text());
+            //    $(this).toggleClass('golden-link');
+
+            // });
+
+
+            // var numlist=[1,2,3,4,5,6];
+
+            // $.each(numlist, function(index, value){
+            //     console.log(index, value);
+            // });
+
+            
+            // $('#imgid').addClass('imgwidth');
+            // $('#pid').removeClass('selected');
+            // $('#divid').toggleClass('highlight');
+            // alert($('#divid').hasClass('highlight'));
+
+
+            // $('#btn1').click(function(){
+            //     if($('a').toggleClass('after').toggleClass('golden-link'));
+            // });
+
+
+            // $('#btn1').click(function(){
+            //     if($('a').hasClass('after') == true){
+            //         $('a').removeClass('after');
+            //         $('a').addClass('golden-link');
+            //     }
+            // });
+
+
+            // $('#btn1').click(function(){
+            //     $('a').removeAttr('id');
+            //     $('a').removeAttr('href')
+            //     });
+                            // var link=$('a').attr('href');
+            // $('divid').text(link);
+            // $('imgid').attr('src','/img/2.jpeg')
+            // $('#btn').click(function(){
+                // $('a').attr('target','_blank')
+            //});
+        });
+    </script>
+</body>
+</html>
