@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> 
+    <style>
+        body {
+            background: #384047;
+            font-family: sans-serif;
+            font-size: 10px
+            }
+        form {
+            background: #fff;
+            padding: 4em 4em 2em;
+            max-width: 400px;
+            margin: 100px auto 0;
+            box-shadow: 0 0 1em #222;
+            border-radius: 5px;
+        }
+        p {
+            margin: 0 0 3em 0;
+            position: relative;
+        }
+        label {
+            display: block;
+            font-size: 1.6em;
+            margin: 0 0 .5em;
+            color: #333;
+        }
+        input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            outline: none
+        }
+        input[type="text"],
+        input[type="password"] {
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            font-size: 1.6em;
+            padding: .8em .5em;
+            border-radius: 5px;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background: #fff
+        }
+        span {
+            border-radius: 5px;
+            display: block;
+            font-size: 1.3em;
+            text-align: center;
+            position: absolute;
+            background: #2F558E;
+            left: 105%;
+            top: 25px;
+            width: 160px;
+            padding: 7px 10px;
+            color: #fff;
+        }
+        span:after {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(136, 183, 213, 0);
+            border-right-color: #2F558E;
+            border-width: 8px;
+            margin-top: -8px;
+        }
+        input[type="submit"] {
+            background: #2F558E;
+            box-shadow: 0 3px 0 0 #1D3C6A;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            font-size: 2em;
+            line-height: 1.6em;
+            margin: 2em 0 0;
+            outline: none;
+            padding: .8em 0;
+            text-shadow: 0 1px #68B25B;
+
+        }
+        div {
+            border: 1px solid black;
+            width: 600px;
+            height: 400px;
+            overflow: scroll;
+        }
+        </style>
+</head>
+<body>
+    <form action="#" method="post">
+		<p>
+			<label for="username">Username</label>
+			<input id="username" name="username" type="text">
+		</p>
+		<p>
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password">
+			<span>Enter a password longer than 8 characters</span>
+		</p>
+		<p>
+			<label for="confirm_password">Confirm Password</label>
+			<input id="confirm_password" name="confirm_password" type="password">
+			<span>Please confirm your password</span>
+		</p>
+		<p>
+			<input type="submit" value="SUBMIT" >
+		</p>
+	</form>
+    <hr>
+    <div class="container" style="background-color: #fff;">
+    <p>Try the scrollbar in div.</p>
+
+    <div onscroll="myFunction()">In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.
+    <br><br>
+    'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this world haven't had the advantages that you've had.'</div>
+
+    <p>Scrolled <span id="demo">0</span> times.</p>
+    </div>
+    <script>
+        var $password = $('#password');
+        var $confirmPassword = $('#confirm_password');
+
+        // Hide hints by default on load
+        $("form span").hide();
+
+        // Check if entered password meets requirements (True or False)
+        function isPasswordValid() {
+        return $password.val().length > 8;
+        }
+
+        // Check if password fields match (True or False)
+        function arePasswordsMatching() {
+        return $password.val() === $confirmPassword.val();
+        }
+
+        // Check if passwords are both valid and matching (True or False)
+        function canSubmit() {
+        return isPasswordValid() && arePasswordsMatching();
+        }
+
+        // Hide hint if password valid, show if not valid
+        function passwordEvent() {
+            if ( isPasswordValid() ) {
+            $password.next().hide();
+            } else {
+            $password.next().show(); 
+            }
+        }
+
+        // Hide hint if both password fields match, show if fields do not match
+        function passwordConfirmation() {
+            if ( arePasswordsMatching() ) {
+            $confirmPassword.next().hide();
+            } else {
+            $confirmPassword.next().show(); 
+            } 
+        }
+
+        // Enable submit button when passwords are both valid and matching
+        function enableSubmit() {
+        $("#submit").prop("disabled", !canSubmit() );
+        }
+
+        $password.focus(passwordEvent).keyup(passwordEvent).keyup(passwordConfirmation).keyup(enableSubmit);
+
+        $confirmPassword.focus(passwordConfirmation).keyup(passwordConfirmation).keyup(enableSubmit);
+
+        enableSubmit();
+    </script>
+    <script>
+        var x = 0;
+        function myFunction() {
+          document.getElementById("demo").innerHTML = x += 1;
+        }
+        </script>
+</body>
+</html>
